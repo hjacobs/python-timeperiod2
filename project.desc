@@ -1,0 +1,7 @@
+group: de.zalando.pymodules
+name: timeperiod
+version: 0.1.0
+title: Time Period Utility
+description: Determines if a datetime is within a certain time period.
+organization: Zalando/Technology/Platform/Software
+type: python
