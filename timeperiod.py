@@ -44,7 +44,7 @@ def in_period(period, dt=None):
     Determines if a datetime is within a certain time period. If the time
     is omitted the current time will be used.
 
-    in_period return 1 is the datetime is within the time period, 0 if not.
+    in_period return True is the datetime is within the time period, False if not.
     If the expression is malformed a TimePeriod.InvalidFormat exception
     will be raised. (Note that this differs from Time::Period, which
     returns -1 if the expression is invalid).
