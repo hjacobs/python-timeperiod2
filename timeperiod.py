@@ -6,6 +6,8 @@ Determines if a datetime is within a given time period. This is a Python
 version of Perl's Time::Period module.
 """
 
+from __future__ import print_function
+
 from datetime import datetime
 import re
 
@@ -120,16 +122,16 @@ def in_period(period, dt=None):
     period = period.lower()
 
     if period == '':
-        return 1
+        return True
 
     sub_periods = re.split(',', period)
 
     # go through each sub-period until one matches (OR logic)
     for sp in sub_periods:
         if _is_in_sub_period(sp, dt):
-            return 1
+            return True
 
-    return 0
+    return False
 
 
 def _is_in_sub_period(sp, dt):
@@ -168,7 +170,7 @@ def _parse_scale(scale_exp):
     scale = m.group(1)
     range = m.group(2)
 
-    if not scale in SCALES:
+    if scale not in SCALES:
         raise InvalidFormat('%s is not a valid scale.' % scale)
 
     ranges = re.split("\s", range)
@@ -331,11 +333,11 @@ def _is_in_range(x, low, high):
         if low != x:
             return 0
     elif high > low:
-                     # e.g. mon-fri
+        # e.g. mon-fri
         if x > high or x < low:
             return 0
     elif low > high:
-                     # e.g. fri-mon
+        # e.g. fri-mon
         if not (x >= low or x <= high):
             return 0
 
@@ -371,9 +373,9 @@ SCALES = {
 
 if __name__ == '__main__':
     try:
-        print in_period('md {1}', datetime(2007, 6, 1, 14))
-        print in_period('hr {9-16}', datetime(2014, 2, 11, 12, 5))
-        print in_period('', datetime(2014, 2, 10))
-        print in_period('hr {0-8}', datetime(2014, 2, 11, 12, 6))
-    except InvalidFormat, ife:
-        print 'Invalid time period format: %s' % ife
+        print(in_period('md {1}', datetime(2007, 6, 1, 14)))
+        print(in_period('hr {9-16}', datetime(2014, 2, 11, 12, 5)))
+        print(in_period('', datetime(2014, 2, 10)))
+        print(in_period('hr {0-8}', datetime(2014, 2, 11, 12, 6)))
+    except InvalidFormat as ife:
+        print('Invalid time period format: %s' % ife)

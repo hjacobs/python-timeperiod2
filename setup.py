@@ -3,4 +3,4 @@
 
 from setuptools import setup
 
-setup(name='zalando-timeperiod', version='0.1.0', py_modules=['timeperiod'])
+setup(name='timeperiod2', version='0.1', py_modules=['timeperiod'])
