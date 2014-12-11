@@ -15,6 +15,18 @@ Installation
 
     $ sudo pip install timeperiod2
 
+Usage
+=====
+
+.. code-block:: python
+
+    import datetime
+    import timeperiod
+    # will return True iff we have Monday, Tuesday or Thursday:
+    timeperiod.in_period('wd {mon tue thu}')
+    # will return True iff we have "office time"
+    timeperiod.in_period('wd {Mon-Fri} hr {9-17}', datetime.datetime.now())
+
 License
 =======
 
