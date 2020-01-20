@@ -322,7 +322,7 @@ def _in_min_max(low, high, min, max, scale):
             raise InvalidFormat('An integer value is required for %s.' % scale)
 
         if high < min or high > max:
-            raise InvalidFormat('%d is not valid for %s. Valid options are between %d and %d.' % (low, scale, min, max))
+            raise InvalidFormat('%d is not valid for %s. Valid options are between %d and %d.' % (high, scale, min, max))
 
     return low, high
 
